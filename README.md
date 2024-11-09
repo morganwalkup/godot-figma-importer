@@ -24,5 +24,12 @@ Place all of the exported images into single folder in your Godot project. Occas
 Either copy fonts from your system or download them for a web source. Add them to a single folder within your Godot project.
 
 ## Using the Godot Importer
+### Importer
 1. Create a User Interface Scene, or a 2D scene with a Control node.
 2. Attach the converter script to the control node in which you want to place the imported content.
+
+### Frame Types
+I created "Frame" node classes to mimic the functionality of Figma layout controls. All of these types of controls exist within Godot, but they are not as straightforward as they are in Figma. These classes are not required to retain a functioning UI so you can detach the scripts as desired.
+
++ Designer Frame: Mimics the controls of the standard frame in Figma. It is an extension of Godot's ScrollContainer.
++ Designer Image Panel: Mimics Figma's image "rectangle." It has the same basic functions as the Designer Frame except it is not intending to contain children nodes.
