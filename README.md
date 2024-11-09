@@ -42,7 +42,9 @@ Either copy fonts from your system or download them for a web source. Add them t
 7. **Import Options: Fonts Folder:** Select the folder to where you copied your fonts. Leaving this empy will result in using Godot's default font.
 8. **Import Options: Images Folder:** Select the folder to where you copied your images. Leaving this empty will result in images not being imported. Selecting a folder will automatically check the Auto Place Images option.
 9. **Import Options: Auto Place Images:** Select or deselect if you want the importer to automatically import images. This option is unavailable if you have not selected an Images Folder.
-10. **Import Options: Component Json Dictionary:** *Advanced Feature, more details below.* Select the json file with the details of which instantiated scene should be used with specific frame ids. 
+10. **Import Options: Component Json Dictionary:** *Not required. This is an advanced Feature, more details below.* Select the json file with the details of which instantiated scene should be used with specific frame ids.
+11. **Import Options: Comp Inst to Scenes:** Set to On to process Figma instances as instantiated Godot scenes using Component Json Dictionary as reference.
+12. **Import Layouts: Import Frames:** Click On to run the importer.
 
 ### Frame Types
 I created "Frame" node classes to mimic the functionality of Figma layout controls. All of these types of controls exist within Godot, but they are not as straightforward as they are in Figma. These classes are not required to retain a functioning UI so you can detach the scripts as desired.
