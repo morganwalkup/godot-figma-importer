@@ -31,5 +31,5 @@ Either copy fonts from your system or download them for a web source. Add them t
 ### Frame Types
 I created "Frame" node classes to mimic the functionality of Figma layout controls. All of these types of controls exist within Godot, but they are not as straightforward as they are in Figma. These classes are not required to retain a functioning UI so you can detach the scripts as desired.
 
-+ Designer Frame: Mimics the controls of the standard frame in Figma. It is an extension of Godot's ScrollContainer.
-+ Designer Image Panel: Mimics Figma's image "rectangle." It has the same basic functions as the Designer Frame except it is not intending to contain children nodes.
++ <ins>**Designer Frame**</ins>: Mimics the controls of the standard frame in Figma. It is an extension of Godot's ScrollContainer.
++ <ins>**Designer Image Panel**</ins>: Mimics Figma's image "rectangle." It has the same basic functions as the Designer Frame except it is not intending to contain children nodes.
