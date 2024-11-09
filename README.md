@@ -1,9 +1,8 @@
 # Figma to Godot Experiment
 An experimental Figma json importer that auto-builds nodes in Godot. 
 
-<ins>**It is**</ins> a project to enable a jump-start on UI design and build within the Godot Engine.
-
-<ins>**It is not**</ins> a program that will automatically build a functional app from Figma.
++ <ins>**It is**</ins> a project to enable a jump-start on UI design and build within the Godot Engine.
++ <ins>**It is not**</ins> a program that will automatically build a functional app from Figma.
 
 ## Exporting from Figma
 ### Data Export
