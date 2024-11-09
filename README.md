@@ -4,6 +4,9 @@ An experimental Figma json importer that auto-builds nodes in Godot.
 + <ins>**It is**</ins> a project to enable a jump-start on UI design and build within the Godot Engine.
 + <ins>**It is not**</ins> a program that will automatically build a functional app from Figma.
 
+## Compatibility
+The importer does not support vectors/polygons/stars/arrows, but it will add a frame in it's place. To use these types of images you will need to export them separately and place them manually within Godot.
+
 ## Exporting from Figma
 ### Data Export
 Exporting the necessary data from figma requires this plugin: https://github.com/yagudaev/figma-to-json
@@ -16,6 +19,9 @@ To export images using the necessary hash names for the importer, use this plugi
 It will export a zip file of images and json, but the json data is not sufficient enough for my importer.
 
 Place all of the exported images into single folder in your Godot project. Occasionally the images exported may be seen as corrupt by Godot. Simply open those files in an image editor and resave them.
+
+### Fonts
+Either copy fonts from your system or download them for a web source. Add them to a single folder within your Godot project.
 
 ## Using the Godot Importer
 1. Create a User Interface Scene, or a 2D scene with a Control node.
