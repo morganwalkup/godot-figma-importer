@@ -45,6 +45,8 @@ For example, to match the code below the font file name is "Inter_Bold.ttf" :
 ```
 
 ## Using the Godot Importer
+Copy this repo's files to your Godot project.
+
 ### Importer
 + Create a User Interface Scene, or a 2D scene with a Control node.
 + Attach the FigmaImporter.gd script to the control node in which you want to place the imported content.
