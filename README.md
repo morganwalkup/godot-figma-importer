@@ -1,4 +1,4 @@
-# Figma to Godot Experiment v1
+# Figma to Godot Experiment
 An experimental Figma json importer that auto-builds nodes in Godot. 
 
 + <ins>**It is**</ins> a project to enable a jump-start on UI design and build within the Godot Engine. This is an attempt to mimic Figma or similar design programs' user experience in Godot.
@@ -6,7 +6,7 @@ An experimental Figma json importer that auto-builds nodes in Godot.
 
 ### Support and Development
 + This is currently a for-fun personal project. I will be updating and working on making this a more flexible plugin in my free time. If you would like to contract me to update or customize this for your project or organization, contact Nate at mightymochigames@gmail.com.
-+ General info / communication Discord: https://discord.gg/4JsqksKMhg
++ For general info communication or to share what you did with your project, visit the Discord: https://discord.gg/4JsqksKMhg
 
 ### Compatibility Issues
 + The importer does not support vectors/polygons/stars/arrows, but it will add a frame in it's place. To use these types of images you will need to export them separately and place them manually within Godot. When an image is missing or unsupported you will see the image below:
@@ -150,4 +150,4 @@ This is a class extension of a ScrollContainer. In Figma, all frames have the po
 + <ins>**Grid Columns:**</ins> The the number of columns in Grid mode.
 
 ## Designer Image Panel Properties
-These are the same as the designer frame mins the auto layout features.
+These are the same as the designer frame minus the auto layout features.
