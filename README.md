@@ -36,18 +36,21 @@ Either copy fonts from your system or download them for a web source. Add them t
 
 ## Using the Godot Importer
 ### Importer
-1. Create a User Interface Scene, or a 2D scene with a Control node.
-2. Attach the FigmaImporter.gd script to the control node in which you want to place the imported content.
-3. <ins>**Document Json File:**</ins> Look at the Inspector under "Figma JSON Import." Select the json you exported from Figma.
-4. <ins>**Process Json:**</ins> Click the Process Json "On" button to load the list of pages.
-5. <ins>**Select Page:**</ins> Select the page from your Figma document you want to load.
-6. <ins>**Select Frame:**</ins> Select the Frame from the selected page you want to import. Currently the importer will display a list of top level frames.
-7. <ins>**Import Options: Fonts Folder:**</ins> Select the folder to where you copied your fonts. Leaving this empy will result in using Godot's default font.
-8. <ins>**Import Options: Images Folder:**</ins> Select the folder to where you copied your images. Leaving this empty will result in images not being imported. Selecting a folder will automatically check the Auto Place Images option.
-9. <ins>**Import Options: Auto Place Images:**</ins> Select or deselect if you want the importer to automatically import images. This option is unavailable if you have not selected an Images Folder.
-10. <ins>**Import Options: Component Json Dictionary:**</ins> *Not required. This is an advanced Feature, more details below.* Select the json file with the details of which instantiated scene should be used with specific frame ids.
-11. <ins>**Import Options: Comp Inst to Scenes:**</ins> Set to On to process Figma instances as instantiated Godot scenes using Component Json Dictionary as reference.
-12. <ins>**Import Layouts: Import Frames:**</ins> Click On to run the importer.
++ Create a User Interface Scene, or a 2D scene with a Control node.
++ Attach the FigmaImporter.gd script to the control node in which you want to place the imported content.
+
+![Screenshot of the Figma Importer Inspector](/doc_images/FigmaJsonImporterInspector.PNG)
+
++ <ins>**Document Json File:**</ins> Look at the Inspector under "Figma JSON Import." Select the json you exported from Figma.
++ <ins>**Process Json:**</ins> Click the Process Json "On" button to load the list of pages.
++ <ins>**Select Page:**</ins> Select the page from your Figma document you want to load.
++ <ins>**Select Frame:**</ins> Select the Frame from the selected page you want to import. Currently the importer will display a list of top level frames.
++ <ins>**Import Options: Fonts Folder:**</ins> Select the folder to where you copied your fonts. Leaving this empy will result in using Godot's default font.
++ <ins>**Import Options: Images Folder:**</ins> Select the folder to where you copied your images. Leaving this empty will result in images not being imported. Selecting a folder will automatically check the Auto Place Images option.
++ <ins>**Import Options: Auto Place Images:**</ins> Select or deselect if you want the importer to automatically import images. This option is unavailable if you have not selected an Images Folder.
++ <ins>**Import Options: Component Json Dictionary:**</ins> *Not required. This is an advanced Feature, more details below.* Select the json file with the details of which instantiated scene should be used with specific frame ids.
++ <ins>**Import Options: Comp Inst to Scenes:**</ins> Set to On to process Figma instances as instantiated Godot scenes using Component Json Dictionary as reference.
++ <ins>**Import Layouts: Import Frames:**</ins> Click On to run the importer.
 
 ### Frame Types Explained
 I created "Frame" node classes to mimic the functionality of Figma layout controls. All of these types of controls exist within Godot, but they are not as straightforward as they are in Figma. These classes are not required to retain a functioning UI so you can detach the scripts as desired.
@@ -57,45 +60,72 @@ I created "Frame" node classes to mimic the functionality of Figma layout contro
 
 ## Designer Frame Properties
 This is a class extension of a ScrollContainer. In Figma, all frames have the potential to become scrollable. To account for this the easiest solution was to use ScrollContainer for any frame that could contain children. ScrollContainers require a single Control child to function properly, and that child houses all other children.
-1. <ins>**Inner Container:**</ins> Select the node that will be the content container for the ScrollContainer. Start with a basic Control. This is important as the Auto Layout functions will change the node type depending on the settings.
-2. <ins>**Horizontal Anchor:**</ins>
-3. <ins>**Vertical Anchor:**</ins>
-4. <ins>**Width Size Mode:**</ins>
-5. <ins>**Height Size Mode:**</ins>
-6. <ins>**Min Size:**</ins>
-7. <ins>**Max Size:**</ins>
-8. <ins>**Frame Rotation:**</ins>
-9. <ins>**Center Rotation:**</ins>
-10. <ins>**Clip Frame Contents:**</ins>
-11. <ins>**Scrolling Mode:**</ins>
-12. <ins>**Break Style Links:**</ins>
-13. <ins>**Fill Color:**</ins>
-14. <ins>**Use Solid Fill:**</ins>
-15. <ins>**Fill Gradient:**</ins>
-16. <ins>**Gradient Behind Image:**</ins>
-17. <ins>**Fill Texture:**</ins>
-18. <ins>**Edge Fill:**</ins>
-19. <ins>**Texture Size Mode:**</ins>
-20. <ins>**Flip X:**</ins>
-21. <ins>**Flip Y:**</ins>
-22. <ins>**Zoom:**</ins>
-23. <ins>**Size Stretch:**</ins>
-24. <ins>**Position Offset:**</ins>
-25. <ins>**Tint Color:**</ins>
-26. <ins>**Border Line Weight All:**</ins>
-27. <ins>**Border Weights:**</ins>
-28. <ins>**Border Color:**</ins>
-29. <ins>**Anti Alias Border:**</ins>
-30. <ins>**Corner Radius All:**</ins>
-31. <ins>**Corner Radius:**</ins>
-32. <ins>**Padding All:**</ins>
-33. <ins>**Padding:**</ins>
-34. <ins>**Shadow:**</ins> Self explanatory. There is no blur in Godot shadows.
-35. <ins>**Layout Mode:**</ins>
-36. <ins>**Layout Wrap:**</ins>
-37. <ins>**H Layout Align:**</ins>
-38. <ins>**V Layout Align:**</ins>
-39. <ins>**Spacing:**</ins>
-40. <ins>**Secondary Spacing:**</ins>
-41. <ins>**Auto Space:**</ins>
-42. <ins>**Grid Columns:**</ins>
+
+![Screenshot of the Designer Frame Inspector](/doc_images/designerFrameInspector.PNG)
+
++ <ins>**Inner Container:**</ins> Select the node that will be the content container for the ScrollContainer. Start with a basic Control. This is important as the Auto Layout functions will change the node type depending on the settings.
++ <ins>**Horizontal Anchor:**</ins>
++ <ins>**Vertical Anchor:**</ins>
+
+![Screenshot of the Designer Frame Inspector](/doc_images/designerFrameSizeInspector.PNG)
+
++ <ins>**Width Size Mode:**</ins>
++ <ins>**Height Size Mode:**</ins>
++ <ins>**Min Size:**</ins>
++ <ins>**Max Size:**</ins>
++ <ins>**Frame Rotation:**</ins>
++ <ins>**Center Rotation:**</ins>
++ <ins>**Clip Frame Contents:**</ins>
++ <ins>**Scrolling Mode:**</ins>
+
+![Screenshot of the Designer Frame Inspector](/doc_images/stylepaddingFillColor.PNG)
+
++ <ins>**Break Style Links:**</ins>
++ <ins>**Fill Color:**</ins>
++ <ins>**Use Solid Fill:**</ins>
++ <ins>**Fill Gradient:**</ins>
++ <ins>**Gradient Behind Image:**</ins>
+
+![Screenshot of the Designer Frame Inspector](/doc_images/designerFramefillimage.PNG)
+
++ <ins>**Fill Texture:**</ins>
++ <ins>**Edge Fill:**</ins>
++ <ins>**Texture Size Mode:**</ins>
++ <ins>**Flip X:**</ins>
++ <ins>**Flip Y:**</ins>
++ <ins>**Zoom:**</ins>
++ <ins>**Size Stretch:**</ins>
++ <ins>**Position Offset:**</ins>
++ <ins>**Tint Color:**</ins>
+
+![Screenshot of the Designer Frame Inspector](/doc_images/designerFrameborder.PNG)
+
++ <ins>**Border Line Weight All:**</ins>
++ <ins>**Border Weights:**</ins>
++ <ins>**Border Color:**</ins>
++ <ins>**Anti Alias Border:**</ins>
+
+![Screenshot of the Designer Frame Inspector](/doc_images/designerFrameCornersPNG.PNG)
+
++ <ins>**Corner Radius All:**</ins>
++ <ins>**Corner Radius:**</ins>
+
+![Screenshot of the Designer Frame Inspector](/doc_images/designerFramePadding.PNG)
+
++ <ins>**Padding All:**</ins>
++ <ins>**Padding:**</ins>
+
+![Screenshot of the Designer Frame Inspector](/doc_images/designerFrameShadow.PNG)
+
++ <ins>**Shadow:**</ins> Self explanatory. There is no blur in Godot shadows.
++ 
+![Screenshot of the Designer Frame Inspector](/doc_images/designerFrameAutoLayout.PNG)
+
++ <ins>**Layout Mode:**</ins>
++ <ins>**Layout Wrap:**</ins>
++ <ins>**H Layout Align:**</ins>
++ <ins>**V Layout Align:**</ins>
++ <ins>**Spacing:**</ins>
++ <ins>**Secondary Spacing:**</ins>
++ <ins>**Auto Space:**</ins>
++ <ins>**Grid Columns:**</ins>
