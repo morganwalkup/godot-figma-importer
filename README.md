@@ -46,11 +46,14 @@ For example, to match the code below the font file name is "Inter_Bold.ttf" :
 ```
 
 ## Using the Godot Importer
-Copy this repo's files to your Godot project.
+Download and copy the folder "FigmaImporter" to your Godot project.
 
 ### Importer
-+ Create a User Interface Scene, or a 2D scene with a Control node.
-+ Attach the FigmaImporter.gd script to the control node in which you want to place the imported content.
++ Create a User Interface Scene, a 2D scene with a Control node, or a scene with a FigmaImporter base node.
+
+![Screenshot of the Figma Importer Inspector](/doc_images/figmaimporternode.PNG)
+
++ If you're not using a FigmaImporter node, attach the FigmaImporter.gd script to the control node in which you want to place the imported content.
 
 ![Screenshot of the Figma Importer Inspector](/doc_images/FigmaJsonImporterInspector.PNG)
 
@@ -64,6 +67,8 @@ Copy this repo's files to your Godot project.
 + <ins>**Import Options: Component Json Dictionary:**</ins> *Not required. This is an advanced Feature, more details below.* Select the json file with the details of which instantiated scene should be used with specific frame ids.
 + <ins>**Import Options: Comp Inst to Scenes:**</ins> Set to On to process Figma instances as instantiated Godot scenes using Component Json Dictionary as reference.
 + <ins>**Import Layouts: Import Frames:**</ins> Click On to run the importer.
+
+When you're done importing, you can detach the Importer script as it is no longer required to work with the nodes.
 
 ### Frame Types Explained
 I created "Frame" node classes to mimic the functionality of Figma layout controls. All of these types of controls exist within Godot, but they are not as straightforward as they are in Figma. These classes are not required to retain a functioning UI so you can detach the scripts as desired.
