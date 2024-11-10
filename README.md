@@ -103,34 +103,34 @@ This is a class extension of a ScrollContainer. In Figma, all frames have the po
   + Fit: Makes sure the image completely fits within the frame.
   + Stretch: Morphs the image to fill the frame edge to edge without cropping.
   + Keep Size: The image size will stay the same size even if you change the frame size.
-+ <ins>**Flip X:**</ins>
-+ <ins>**Flip Y:**</ins>
-+ <ins>**Zoom:**</ins>
-+ <ins>**Size Stretch:**</ins>
-+ <ins>**Position Offset:**</ins>
-+ <ins>**Tint Color:**</ins>
++ <ins>**Flip X:**</ins> Flips the image horizontally.
++ <ins>**Flip Y:**</ins> Flips the image vertically.
++ <ins>**Zoom:**</ins> Zooms the image.
++ <ins>**Size Stretch:**</ins> Manual setting for stretch.
++ <ins>**Position Offset:**</ins> Manual setting for offest within the frame.
++ <ins>**Tint Color:**</ins> Tints the color of the image. Change the alpha will change the alpha of the image.
 
 ![Screenshot of the Designer Frame Inspector](/doc_images/designerFrameborder.PNG)
 
-+ <ins>**Border Line Weight All:**</ins>
-+ <ins>**Border Weights:**</ins>
-+ <ins>**Border Color:**</ins>
-+ <ins>**Anti Alias Border:**</ins>
++ <ins>**Border Line Weight All:**</ins> Changes all border weights.
++ <ins>**Border Weights:**</ins> An array of 4 border weights. Top, Right, Bottom, Left.
++ <ins>**Border Color:**</ins> Border color.
++ <ins>**Anti Alias Border:**</ins> Smooths the border line. This can create color artifacts if using fill textures. See Edge Fill.
 
 ![Screenshot of the Designer Frame Inspector](/doc_images/designerFrameCornersPNG.PNG)
 
-+ <ins>**Corner Radius All:**</ins>
-+ <ins>**Corner Radius:**</ins>
++ <ins>**Corner Radius All:**</ins> Changes all of the corner radius array.
++ <ins>**Corner Radius:**</ins> An array of 4 corner radius. Top, Right, Bottom, Left.
 
 ![Screenshot of the Designer Frame Inspector](/doc_images/designerFramePadding.PNG)
 
-+ <ins>**Padding All:**</ins>
-+ <ins>**Padding:**</ins>
++ <ins>**Padding All:**</ins> Changes all of the edge padding.
++ <ins>**Padding:**</ins> An array of 4 paddings. Top, Right, Bottom, Left.
 
 ![Screenshot of the Designer Frame Inspector](/doc_images/designerFrameShadow.PNG)
 
 + <ins>**Shadow:**</ins> Self explanatory. There is no blur in Godot shadows.
-+ 
+
 ![Screenshot of the Designer Frame Inspector](/doc_images/designerFrameAutoLayout.PNG)
 
 + <ins>**Layout Mode:**</ins>
