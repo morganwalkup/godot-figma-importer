@@ -9,7 +9,9 @@ An experimental Figma json importer that auto-builds nodes in Godot.
 + General info / communication Discord: https://discord.gg/4JsqksKMhg
 
 ### Compatibility
-+ The importer does not support vectors/polygons/stars/arrows, but it will add a frame in it's place. To use these types of images you will need to export them separately and place them manually within Godot.
++ The importer does not support vectors/polygons/stars/arrows, but it will add a frame in it's place. To use these types of images you will need to export them separately and place them manually within Godot. When an image is missing or unsupported you will see the image below:
+  + ![Screenshot of the Figma Importer Inspector](/doc_images/errorTexture.png)
+
 + Figma image crop. Godot will place the image but you will need to re-crop within the frame.
 + Gradients. I am using Godot gradient textures and they do not support the squash and stretch of radial gradients.
 + Shadows. Figma shadows have more settings than Godot StyleBox shadows support.
@@ -32,7 +34,15 @@ It will export a zip file of images and json. Discard that json as the json data
 Place all of the exported images into single folder in your Godot project. Occasionally the images exported may be seen as corrupt by Godot. Simply open those files in an image editor and resave them with the same file name. Currently the importer is only set up for PNG image files.
 
 ### Fonts
-Either copy fonts from your system or download them for a web source. Add them to a single folder within your Godot project.
+Either copy fonts from your system or download them for a web source. Add them to a single folder within your Godot project. The font files must be named to match the font name in the JSON export file. 
+
+For example the font file name is "Inter_Bold.ttf" to match the code below:
+```
+"fontName": {
+  "family": "Inter",
+  "style": "Bold"
+}
+```
 
 ## Using the Godot Importer
 ### Importer
