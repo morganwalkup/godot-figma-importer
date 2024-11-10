@@ -8,7 +8,7 @@ An experimental Figma json importer that auto-builds nodes in Godot.
 + This is currently a for-fun personal project. I will be updating and working on making this a more flexible plugin in my free time. If you would like to contract me to update or customize this for your project or organization, contact Nate at mightymochigames@gmail.com.
 + General info / communication Discord: https://discord.gg/4JsqksKMhg
 
-### Compatibility
+### Compatibility Issues
 + The importer does not support vectors/polygons/stars/arrows, but it will add a frame in it's place. To use these types of images you will need to export them separately and place them manually within Godot. When an image is missing or unsupported you will see the image below:
   + ![Screenshot of the Figma Importer Inspector](/doc_images/errorTexture.png)
 
