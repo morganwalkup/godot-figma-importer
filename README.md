@@ -133,11 +133,16 @@ This is a class extension of a ScrollContainer. In Figma, all frames have the po
 
 ![Screenshot of the Designer Frame Inspector](/doc_images/designerFrameAutoLayout.PNG)
 
-+ <ins>**Layout Mode:**</ins>
-+ <ins>**Layout Wrap:**</ins>
-+ <ins>**H Layout Align:**</ins>
-+ <ins>**V Layout Align:**</ins>
-+ <ins>**Spacing:**</ins>
-+ <ins>**Secondary Spacing:**</ins>
-+ <ins>**Auto Space:**</ins>
-+ <ins>**Grid Columns:**</ins>
++ <ins>**Layout Mode:**</ins> Creates or changes the direction and type of auto layout. This will swap the inner container node with the appropriate Godot control node.
+  + None: Swaps in a Control.
+  + Vertical: Swaps in a VBoxContainer.
+  + Horizontal: Swaps in a HBoxContainer.
+  + Grid: Swaps in a GridContainer.
++ <ins>**Layout Wrap:**</ins> This works in conjuction with the Layout Mode. This will not effect Grid.
+  + NO_WRAP: Swaps VFlowContainer or HFlowContainer with VBoxContainer or HBoxContainer  respectively.
+  + WRAP: Swaps VBoxContainer or HBoxContainer with VFlowContainer or HFlowContainer respectively.
++ <ins>**H and V Layout Align:**</ins> Changes the child node positioning. This is different from default Godot as I am changing each child's positioning when needed vs just modifying the parent container. This creates an effect closer to how Figma aligns content.
++ <ins>**Spacing:**</ins> Changing the space between children.
++ <ins>**Secondary Spacing:**</ins> In some containers you can change the horizontal and vertical spacing.
++ <ins>**Auto Space:**</ins> This option will expand the space of children to automatically fit the space. Only works in Vertical and Horizontal NO_WRAP.
++ <ins>**Grid Columns:**</ins> The the number of columns in Grid mode.
