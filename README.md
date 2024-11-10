@@ -24,12 +24,12 @@ An experimental Figma json importer that auto-builds nodes in Godot.
 ### Data Export
 Exporting the necessary data from figma requires this plugin: https://github.com/yagudaev/figma-to-json
 
-Follow the plugin instructions to export a json into your Godot project. 
+Follow the plugin instructions to export a json into your Godot project. This plugin requires the desktop app. 
 
 ### Image Export
 To export images using the necessary hash names for the importer, use this plugin: https://www.figma.com/community/plugin/1070707193730369068/tojson
 
-It will export a zip file of images and json. Discard that json as the json data is not sufficient enough for my importer.
+It will export a zip file of images and json. Discard that json as the data is not sufficient enough for my importer.
 
 Place all of the exported images into single folder in your Godot project. Occasionally the images exported may be seen as corrupt by Godot. Simply open those files in an image editor and resave them with the same file name. Currently the importer is only set up for PNG image files.
 
@@ -69,38 +69,40 @@ I created "Frame" node classes to mimic the functionality of Figma layout contro
 + <ins>**Designer Image Panel**</ins>: Mimics Figma's image "rectangle." It has the same basic functions as the Designer Frame except it is not intending to contain children nodes. It is an extension of Godot's Panel node.
 
 ## Designer Frame Properties
-This is a class extension of a ScrollContainer. In Figma, all frames have the potential to become scrollable. To account for this the easiest solution was to use ScrollContainer for any frame that could contain children. ScrollContainers require a single Control child to function properly, and that child houses all other children.
+This is a class extension of a ScrollContainer. In Figma, all frames have the potential to become scrollable. To account for this the easiest solution was to use ScrollContainer for any frame that could contain children. ScrollContainers require a single Control child to function properly, and that child houses all other children. Almost all of these custom settings, aside from fill texture and max size, are a repackaging of existing Godot node functions. I have simply consolidated them into one spot.
 
 ![Screenshot of the Designer Frame Inspector](/doc_images/designerFrameInspector.PNG)
 
 + <ins>**Inner Container:**</ins> Select the node that will be the content container for the ScrollContainer. Start with a basic Control. This is important as the Auto Layout functions will change the node type depending on the settings.
-+ <ins>**Horizontal Anchor:**</ins>
-+ <ins>**Vertical Anchor:**</ins>
++ <ins>**Horizontal and Vertical Anchor:**</ins> Set the anchor positions to determine how the frame will move or scale with the parent node. This differs from the default Godot anchors in that changing the anchors does not change the position or size of the frame/node. 
 
 ![Screenshot of the Designer Frame Inspector](/doc_images/designerFrameSizeInspector.PNG)
 
-+ <ins>**Width Size Mode:**</ins>
-+ <ins>**Height Size Mode:**</ins>
-+ <ins>**Min Size:**</ins>
-+ <ins>**Max Size:**</ins>
-+ <ins>**Frame Rotation:**</ins>
-+ <ins>**Center Rotation:**</ins>
-+ <ins>**Clip Frame Contents:**</ins>
-+ <ins>**Scrolling Mode:**</ins>
++ <ins>**Width and Height Size Mode:**</ins> Determines how the node will scale when in an auto layout.
++ <ins>**Min Size:**</ins> The node's smallest size.
++ <ins>**Max Size:**</ins> The node's largest size.
++ <ins>**Frame Rotation:**</ins> A duplication of node rotation for ease of access.
++ <ins>**Center Rotation:**</ins> Centers the rotation/transform pivot point. This will be maintain even when changing the node size.
++ <ins>**Clip Frame Contents:**</ins> Clips the contents of the frame. Note that in Godot clipping will not rotate with the frame/node.
++ <ins>**Scrolling Mode:**</ins> Change the frame scroll direction or whether it scrolls at all.
 
 ![Screenshot of the Designer Frame Inspector](/doc_images/stylepaddingFillColor.PNG)
 
-+ <ins>**Break Style Links:**</ins>
-+ <ins>**Fill Color:**</ins>
-+ <ins>**Use Solid Fill:**</ins>
-+ <ins>**Fill Gradient:**</ins>
-+ <ins>**Gradient Behind Image:**</ins>
++ <ins>**Break Style Links:**</ins> If you find changing one node is changing others, click this to break the style link. This will duplicate the Stylebox and shader to break it free of others.
++ <ins>**Fill Color:**</ins> Set the fill color.
++ <ins>**Use Solid Fill:**</ins> When placing an image with transparency, this option determines if the fill color appears behind it.
++ <ins>**Fill Gradient:**</ins> Add a gradient. Gradients always appear above the fill color.
++ <ins>**Gradient Behind Image:**</ins> If there is a fill image, you can set whether it appears in front of or behind that image.
 
 ![Screenshot of the Designer Frame Inspector](/doc_images/designerFramefillimage.PNG)
 
-+ <ins>**Fill Texture:**</ins>
-+ <ins>**Edge Fill:**</ins>
-+ <ins>**Texture Size Mode:**</ins>
++ <ins>**Fill Texture:**</ins> Add a background image to the frame.
++ <ins>**Edge Fill:**</ins> If there is an anti-aliased border, use this option to reduce an unexpected color bleeding.
++ <ins>**Texture Size Mode:**</ins> Godot will repeat the edge of pixels if there is not transparency and image does not fill the frame.
+  + Fill: Fills the frame with the image.
+  + Fit: Makes sure the image completely fits within the frame.
+  + Stretch: Morphs the image to fill the frame edge to edge without cropping.
+  + Keep Size: The image size will stay the same size even if you change the frame size.
 + <ins>**Flip X:**</ins>
 + <ins>**Flip Y:**</ins>
 + <ins>**Zoom:**</ins>
