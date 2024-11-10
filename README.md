@@ -146,3 +146,6 @@ This is a class extension of a ScrollContainer. In Figma, all frames have the po
 + <ins>**Secondary Spacing:**</ins> In some containers you can change the horizontal and vertical spacing.
 + <ins>**Auto Space:**</ins> This option will expand the space of children to automatically fit the space. Only works in Vertical and Horizontal NO_WRAP.
 + <ins>**Grid Columns:**</ins> The the number of columns in Grid mode.
+
+## Designer Image Panel Properties
+These are the same as the designer frame mins the auto layout features.
