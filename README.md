@@ -12,6 +12,7 @@ An experimental Figma json importer that auto-builds nodes in Godot.
 + The importer does not support vectors/polygons/stars/arrows, but it will add a frame in it's place. To use these types of images you will need to export them separately and place them manually within Godot.
 + Figma image crop. Godot will place the image but you will need to re-crop within the frame.
 + Gradients. I am using Godot gradient textures and they do not support the squash and stretch of radial gradients.
++ Shadows. Figma shadows have more settings than Godot StyleBox shadows support.
 
 ### Disclamer
 + Game performance has not been tested. There may be, and probably is, more optimized ways of building UI elements depending on the game or application. Use the importer and related classes to jump start your development. 
@@ -57,3 +58,44 @@ I created "Frame" node classes to mimic the functionality of Figma layout contro
 ## Designer Frame Properties
 This is a class extension of a ScrollContainer. In Figma, all frames have the potential to become scrollable. To account for this the easiest solution was to use ScrollContainer for any frame that could contain children. ScrollContainers require a single Control child to function properly, and that child houses all other children.
 1. <ins>**Inner Container:**</ins> Select the node that will be the content container for the ScrollContainer. Start with a basic Control. This is important as the Auto Layout functions will change the node type depending on the settings.
+2. <ins>**Horizontal Anchor:**</ins>
+3. <ins>**Vertical Anchor:**</ins>
+4. <ins>**Width Size Mode:**</ins>
+5. <ins>**Height Size Mode:**</ins>
+6. <ins>**Min Size:**</ins>
+7. <ins>**Max Size:**</ins>
+8. <ins>**Frame Rotation:**</ins>
+9. <ins>**Center Rotation:**</ins>
+10. <ins>**Clip Frame Contents:**</ins>
+11. <ins>**Scrolling Mode:**</ins>
+12. <ins>**Break Style Links:**</ins>
+13. <ins>**Fill Color:**</ins>
+14. <ins>**Use Solid Fill:**</ins>
+15. <ins>**Fill Gradient:**</ins>
+16. <ins>**Gradient Behind Image:**</ins>
+17. <ins>**Fill Texture:**</ins>
+18. <ins>**Edge Fill:**</ins>
+19. <ins>**Texture Size Mode:**</ins>
+20. <ins>**Flip X:**</ins>
+21. <ins>**Flip Y:**</ins>
+22. <ins>**Zoom:**</ins>
+23. <ins>**Size Stretch:**</ins>
+24. <ins>**Position Offset:**</ins>
+25. <ins>**Tint Color:**</ins>
+26. <ins>**Border Line Weight All:**</ins>
+27. <ins>**Border Weights:**</ins>
+28. <ins>**Border Color:**</ins>
+29. <ins>**Anti Alias Border:**</ins>
+30. <ins>**Corner Radius All:**</ins>
+31. <ins>**Corner Radius:**</ins>
+32. <ins>**Padding All:**</ins>
+33. <ins>**Padding:**</ins>
+34. <ins>**Shadow:**</ins> Self explanatory. There is no blur in Godot shadows.
+35. <ins>**Layout Mode:**</ins>
+36. <ins>**Layout Wrap:**</ins>
+37. <ins>**H Layout Align:**</ins>
+38. <ins>**V Layout Align:**</ins>
+39. <ins>**Spacing:**</ins>
+40. <ins>**Secondary Spacing:**</ins>
+41. <ins>**Auto Space:**</ins>
+42. <ins>**Grid Columns:**</ins>
