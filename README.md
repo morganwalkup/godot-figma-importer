@@ -36,7 +36,7 @@ Place all of the exported images into single folder in your Godot project. Occas
 ### Fonts
 Either copy fonts from your system or download them for a web source. Add them to a single folder within your Godot project. The font files must be named to match the font name in the JSON export file. 
 
-For example the font file name is "Inter_Bold.ttf" to match the code below:
+For example, to match the code below the font file name is "Inter_Bold.ttf" :
 ```
 "fontName": {
   "family": "Inter",
