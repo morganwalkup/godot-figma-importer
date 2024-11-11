@@ -416,7 +416,8 @@ func renderTextFrame(parent,p_id):
 	set_texthSize_fup(processed_json_dict[p_id]["layout_vert_sizing"],newFrame)
 	
 func place_component_inst(parent,p_id):
-	var newComp = load(component_dictionary[processed_json_dict[p_id]["master_comp"]])
+	var adjustedID = make_safeName(processed_json_dict[p_id]["master_comp"])
+	var newComp = load(component_dictionary[adjustedID])
 	var newFrame = newComp.instantiate()
 	newFrame.name = processed_json_dict[p_id]["name"]+" xIDx"+ make_safeName(p_id)+"x"
 	for key in processed_json_dict[p_id]["component_properties"].keys():
