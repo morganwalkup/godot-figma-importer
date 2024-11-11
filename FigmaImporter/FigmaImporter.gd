@@ -250,7 +250,8 @@ func renderFrameAndContents(object_id,parent,position_override:bool):
 		if processed_json_dict[object_id]["relativeTransform"][1][1] < 0:
 			newFrame.scale.y *= -1
 		newFrame.set_deferred("center_rotation", true)
-		newFrame.padding = processed_json_dict[object_id]["padding"]
+		if !isRectangle:
+			newFrame.padding = processed_json_dict[object_id]["padding"]
 		newFrame.fill_color = Color(0.0,0.0,0.0,0.0)
 		if the_type == "POLYGON" || the_type == "VECTOR" || the_type == "STAR":
 			place_error_image(newFrame)
