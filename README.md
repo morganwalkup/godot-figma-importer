@@ -165,7 +165,11 @@ These are the same as the designer frame minus the auto layout features.
 ## Figma Component Instances to Godot Instantiated Child Scenes
 Rather than importing and rebuilding all of the Figma frames, you can save scenes and have the importer instantiate those scenes using the variables from the Figma component. 
 
-For the importer to know what child scene to instantiate you must write a json dictionary matching the component IDs to the scene files. To get the component IDs, import the component into Godot via the importer. Look at the node names and you will see the ID in between xIDx____x.
+For the importer to know what child scene to instantiate you must write a json dictionary matching the component IDs to the scene files. 
+
+To get the component IDs:
+1. Import the component Frame into Godot via the importer.
+2. Look at the node names and you will see the ID in between xIDx____x.
 
 ![Screenshot of finding component IDS.](/doc_images/findingcomponentID.png)
 
