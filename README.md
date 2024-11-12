@@ -161,3 +161,85 @@ This is a class extension of a ScrollContainer. In Figma, all frames have the po
 
 ## Designer Image Panel Properties
 These are the same as the designer frame minus the auto layout features.
+
+## Figma Component Instances to Godot Instantiated Child Scenes
+Rather than importing and rebuilding all of the Figma frames, you can save scenes and have the importer instantiate those scenes using the variables from the Figma component. 
+
+For the importer to know what child scene to instantiate you must write a json dictionary matching the component IDs to the scene files. To get the component IDs, import the component into Godot via the importer. Look at the node names and you will see the ID in between xIDx____x.
+
+![Screenshot of finding component IDS.](/doc_images/findingcomponentID.png)
+
+Copy that ID and write a json like the one below.
+```
+{
+	"441_161": "res://components/my_instance_scene.tscn",
+	"441_167": "res://components/my_instance_scene.tscn",
+	"441_173": "res://components/my_instance_scene.tscn"
+}
+```
+### Scenes
+
+![Screenshot of child scene.](/doc_images/childscene.png)
+
+Build the scenes as you see fit. If you want to use the custom Frame classes I built, extend the script and then you can add your own.
+
+![Screenshot of child scene.](/doc_images/extend.PNG)
+
+To retain functionality, format your script like the one below.
+
+```
+@tool extends DesignerFrame
+
+func _ready() -> void:
+	super._ready()
+```
+
+If you add variables that require the node to be ready, you'll need to set those variables again in the _ready func. A complete example below.
+
+```
+@tool extends DesignerFrame
+
+@export var Title:String = "Title":
+	set(value):
+		Title = value
+		get_node("InnerContainer/Text Area xIDx267_42x/InnerContainer/Title Label").text = Title
+@export var Desc:String = "desc":
+	set(value):
+		Desc = value
+		get_node("InnerContainer/Text Area xIDx267_42x/InnerContainer/Description Label").text = Desc
+@export var thumb_image:Texture :
+	set(value):
+		thumb_image = value
+		get_node("InnerContainer/Thumbnail xIDx267_47x").fill_texture = thumb_image
+@export_enum("Red","Green","Blue") var Type:String = "Red":
+	set(value):
+		Type = value
+		var label_settings = get_node("InnerContainer/Text Area xIDx267_42x/InnerContainer/Title Label").label_settings.duplicate()
+		match Type:
+			"Red":
+				get_node("InnerContainer/Thumbnail xIDx267_47x").border_color = Color(0.724,0.17,0.0,1.0)
+				label_settings.set_font_color(Color(0.724,0.17,0.0,1.0))
+				get_node("InnerContainer/Text Area xIDx267_42x/InnerContainer/Title Label").label_settings = label_settings
+			"Green":
+				get_node("InnerContainer/Thumbnail xIDx267_47x").border_color = Color(0.039,0.812,0.514,1.0)
+				label_settings.set_font_color(Color(0.039,0.812,0.514,1.0))
+				get_node("InnerContainer/Text Area xIDx267_42x/InnerContainer/Title Label").label_settings = label_settings
+			"Blue":
+				get_node("InnerContainer/Thumbnail xIDx267_47x").border_color = Color(0.0,0.737,0.992,1.0)
+				label_settings.set_font_color(Color(0.0,0.737,0.992,1.0))
+				get_node("InnerContainer/Text Area xIDx267_42x/InnerContainer/Title Label").label_settings = label_settings
+
+func _ready() -> void:
+	super._ready()
+	thumb_image = thumb_image
+	Type = Type
+```
+
+Match the variable names to the Figma component properties, and the importer will automatically apply the values.
+
+![Screenshot of Figma Properties.](/doc_images/properties.PNG)
+
+![Screenshot of Figma Properties.](/doc_images/godotvariables.PNG)
+
+
+
