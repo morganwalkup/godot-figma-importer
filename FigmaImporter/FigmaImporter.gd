@@ -210,8 +210,8 @@ func renderFrameAndContents(object_id,parent,position_override:bool):
 		newFrame.name = processed_json_dict[object_id]["name"]+" xIDx"+ make_safeName(object_id)+"x"
 		parent.add_child(newFrame)
 		newFrame.set_owner(get_tree().get_edited_scene_root())
-		newFrame.scrollingMode = "None"
 		if !isRectangle:
+			newFrame.scrollingMode = "None"
 			var newControl = Control.new()
 			newControl.name = "InnerContainer"
 			newFrame.add_child(newControl)
