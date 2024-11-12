@@ -22,6 +22,9 @@ An experimental Figma json importer that auto-builds nodes in Godot.
 + I have not yet accounted for all error handling.
 + There are some code redundancies. I'm going to eliminate those as I move this concept to a plugin.
 
+### Video Walkthrough Preview
+[Youtube Walkthrough Preview](https://youtu.be/1WlDywF6gWI?si=KGAVI-KH-K4LlSEH)
+
 ## Exporting from Figma
 ### Data Export
 Exporting the necessary data from figma requires this plugin: https://github.com/yagudaev/figma-to-json
