@@ -169,6 +169,7 @@ For the importer to know what child scene to instantiate you must write a json d
 
 ![Screenshot of finding component IDS.](/doc_images/findingcomponentID.png)
 
+### JSON
 Copy that ID and write a json like the one below.
 ```
 {
@@ -235,7 +236,7 @@ func _ready() -> void:
 	Type = Type
 ```
 
-Match the variable names to the Figma component properties, and the importer will automatically apply the values.
+Match the variable names to the Figma component properties, and the importer will automatically apply the values. Only properties that Figma supports are exported / imported.
 
 ![Screenshot of Figma Properties.](/doc_images/properties.PNG)
 
