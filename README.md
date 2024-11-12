@@ -15,6 +15,7 @@ An experimental Figma json importer that auto-builds nodes in Godot.
 + Figma image crop. Godot will place the image but you will need to re-crop within the frame.
 + Gradients. I am using Godot gradient textures and they do not support the squash and stretch of radial gradients.
 + Shadows. Figma shadows have more settings than Godot StyleBox shadows support.
++ Groups. Children of groups within Figma maintain an absolute position instead of a relative. I have not set up the code to handle this yet.
 
 ### Disclamer
 + Game performance has not been tested. There may be, and probably is, more optimized ways of building UI elements depending on the game or application. Use the importer and related classes to jump start your development. 
