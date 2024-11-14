@@ -387,7 +387,9 @@ func renderTextFrame(parent,p_id):
 	newLabelSettings.line_spacing = 0
 	if fonts_folder != null and fonts_folder != "":
 		var dynamic_font = FontFile.new()
-		var font_location:String = fonts_folder + "/" + processed_json_dict[p_id]["fontName"]["family"] + "_" + remove_spaces(processed_json_dict[p_id]["fontName"]["style"] + ".ttf")
+		var font_name = str(processed_json_dict[p_id]["fontName"]["family"]).replace(" ", "")
+		var font_style = str(processed_json_dict[p_id]["fontName"]["style"]).replace(" ", "")
+		var font_location:String = fonts_folder + "/" + font_name + "_" + font_style + ".ttf"
 		if FileAccess.file_exists(font_location):
 			newLabelSettings.font = load(font_location)
 	set_anchor_horizontal_fup(processed_json_dict[p_id]["horizontalAnchor"],newFrame)
@@ -504,7 +506,7 @@ func set_textwSize_fup(widthSizeMode,theNode)->void:
 		"FIXED":
 			theNode.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
 		"FILL":
-			theNode.size_flags_horizontal = Control.SIZE_FILL
+			theNode.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 
 func set_texthSize_fup(heightSizeMode,theNode)->void:
 	match heightSizeMode:
@@ -514,7 +516,7 @@ func set_texthSize_fup(heightSizeMode,theNode)->void:
 		"FIXED":
 			theNode.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
 		"FILL":
-			theNode.size_flags_vertical = Control.SIZE_FILL
+			theNode.size_flags_vertical = Control.SIZE_EXPAND_FILL
 
 
 func test_key(the_dict,the_key:String):
