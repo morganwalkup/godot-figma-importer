@@ -210,6 +210,7 @@ func renderFrameAndContents(object_id,parent,position_override:bool):
 		newFrame.name = processed_json_dict[object_id]["name"]+" xIDx"+ make_safeName(object_id)+"x"
 		parent.add_child(newFrame)
 		newFrame.set_owner(get_tree().get_edited_scene_root())
+		newFrame.use_solid_fill = false
 		if !isRectangle:
 			newFrame.scrollingMode = "None"
 			var newControl = Control.new()
@@ -298,6 +299,7 @@ func process_colors(theColorsArray,theNode):
 			match theColorsArray[aFill]["type"]:
 				"SOLID":
 					theNode.fill_color = Color(theColorsArray[aFill]["color"]["r"],theColorsArray[aFill]["color"]["g"],theColorsArray[aFill]["color"]["b"],theColorsArray[aFill]["opacity"])
+					theNode.use_solid_fill = true
 				"GRADIENT_LINEAR":
 					var gradient = Gradient.new() 
 					for colorStop in theColorsArray[aFill]["gradientStops"].size():

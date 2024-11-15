@@ -108,6 +108,7 @@ static func bgImageActivate(theNode:Control,fill_texture:Texture)->void:
 	theNode.styleBox.set("bg_color", Color(0.6,0.6,0.6,1.0))
 	theNode.material.set_shader_parameter("new_bg_color", theNode.fill_color)
 	theNode.add_theme_stylebox_override("panel", theNode.styleBox)
+	theNode.use_solid_fill = theNode.use_solid_fill
 	theNode.notify_property_list_changed()
 	
 static func resetTextureDefaults(theNode:Control)->void:
