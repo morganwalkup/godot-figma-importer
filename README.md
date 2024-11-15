@@ -16,6 +16,7 @@ An experimental Figma json importer that auto-builds nodes in Godot.
 + Gradients. I am using Godot gradient textures and they do not support the squash and stretch of radial gradients.
 + Shadows. Figma shadows have more settings than Godot StyleBox shadows support.
 + Groups. Children of groups within Figma maintain an absolute position instead of a relative. I have not set up the code to handle this yet.
++ Figma's Flip Horizontal/Vertical. Figma flips by rotating and changing scale. If the frame is part of an autolayout, Godot will not "flip" the frame. If it is just an image, use the Flip_X or Flip_Y option in the Fill texture section.
 
 ### Disclamer
 + Game performance has not been tested. There may be, and probably is, more optimized ways of building UI elements depending on the game or application. Use the importer and related classes to jump start your development. 
