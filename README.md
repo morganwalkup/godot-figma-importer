@@ -3,7 +3,7 @@ An experimental Figma json importer that auto-builds nodes in Godot.
 
 ![Video of the Figma Importer Inspector](/doc_images/example.gif)
 
-This a project to enable a jump-start on UI design and build within the Godot Engine and an attempt to mimic Figma or similar design programs' user experience in Godot.
+This is a project to enable a jump-start on UI design and build within the Godot Engine and an attempt to mimic Figma or similar design programs' user experience in Godot.
 
 ### Support and Development
 + This is currently a for-fun personal project. I will be updating and working on making this a more flexible plugin in my free time. If you would like to contract me to update or customize this for your project or organization, contact Nate at mightymochigames@gmail.com.
