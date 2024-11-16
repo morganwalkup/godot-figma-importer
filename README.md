@@ -41,7 +41,7 @@ It will export a zip file of images and json. Discard that json as the data is n
 Place all of the exported images into single folder in your Godot project. Occasionally the images exported may be seen as corrupt by Godot. Simply open those files in an image editor and resave them with the same file name. Currently the importer is only set up for PNG image files.
 
 ### Fonts
-Either copy fonts from your system or download them for a web source. Add them to a single folder within your Godot project. The font files must be named to match the font name in the JSON export file. 
+Either copy fonts from your system or download them for a web source. Add them to a single folder within your Godot project. The font files must be named to match the font name in the JSON export file. Font names will have spaces removed and styles will be separated by an underscore(_).
 
 For example, to match the code below the font file name is "Inter_Bold.ttf" :
 ```
