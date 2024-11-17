@@ -27,7 +27,7 @@ This is a project to enable a jump-start on UI design and build within the Godot
 ### Video Walkthrough Preview
 [Youtube Walkthrough Preview](https://youtu.be/1WlDywF6gWI?si=KGAVI-KH-K4LlSEH)
 
-## Exporting from Figma
+#Exporting from Figma
 ### Data Export
 Exporting the necessary data from figma requires this plugin: https://github.com/yagudaev/figma-to-json
 
@@ -51,7 +51,7 @@ For example, to match the code below the font file name is "Inter_Bold.ttf" :
 }
 ```
 
-## Using the Godot Importer
+# Using the Godot Importer
 Download and copy the folder "FigmaImporter" to your Godot project.
 
 ### Importer
