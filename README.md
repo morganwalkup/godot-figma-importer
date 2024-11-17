@@ -27,7 +27,7 @@ This is a project to enable a jump-start on UI design and build within the Godot
 ### Video Walkthrough Preview
 [Youtube Walkthrough Preview](https://youtu.be/1WlDywF6gWI?si=KGAVI-KH-K4LlSEH)
 
-#Exporting from Figma
+# Exporting from Figma
 ### Data Export
 Exporting the necessary data from figma requires this plugin: https://github.com/yagudaev/figma-to-json
 
