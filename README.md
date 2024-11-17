@@ -164,7 +164,7 @@ This is a class extension of a ScrollContainer. In Figma, all frames have the po
 ## Designer Image Panel Properties
 These are the same as the designer frame minus the auto layout features.
 
-## Figma Component Instances to Godot Instantiated Child Scenes
+# Figma Component Instances to Godot Instantiated Child Scenes
 Rather than importing and rebuilding all of the Figma frames, you can save scenes and have the importer instantiate those scenes using the variables from the Figma component. 
 
 For the importer to know what child scene to instantiate you must write a json dictionary matching the component IDs to the scene files. 
