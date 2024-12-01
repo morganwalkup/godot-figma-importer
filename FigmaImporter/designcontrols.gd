@@ -328,6 +328,7 @@ static func change_layout(theNode:Control,inner_container:NodePath)->void:
 				GBoxClass.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 				theNode.get_node(inner_container).replace_by(GBoxClass, true)
 				set_grid_col(theNode,theNode.grid_columns,inner_container)
+	container_align_adjust(theNode,inner_container)
 	update_gap_space(theNode,inner_container)
 	theNode.notify_property_list_changed()
 
@@ -390,14 +391,30 @@ static func container_align_adjust(theNode:Control,inner_container:NodePath)->vo
 	var the_container = theNode.get_node(inner_container)
 	match theNode.layoutMode:
 		"VERTICAL":
+			if the_container.is_class("VFlowContainer"):
+				match theNode.hLayoutAlign:
+					"Left":
+						the_container.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN | Control.SIZE_EXPAND
+					"Center":
+						the_container.size_flags_horizontal = Control.SIZE_SHRINK_CENTER | Control.SIZE_EXPAND
+					"Right":
+						the_container.size_flags_horizontal = Control.SIZE_SHRINK_END | Control.SIZE_EXPAND
 			match theNode.vLayoutAlign:
 				"Top":
 					the_container.alignment = BoxContainer.AlignmentMode.ALIGNMENT_BEGIN
 				"Center":
 					the_container.alignment = BoxContainer.AlignmentMode.ALIGNMENT_CENTER
 				"Bottom":
-					the_container.alignment = BoxContainer.AlignmentMode.ALIGNMENT_END
+						the_container.alignment = BoxContainer.AlignmentMode.ALIGNMENT_END
 		"HORIZONTAL":
+			if the_container.is_class("HFlowContainer"):
+				match theNode.vLayoutAlign:
+					"Top":
+						the_container.size_flags_vertical = Control.SIZE_SHRINK_BEGIN | Control.SIZE_EXPAND
+					"Center":
+						the_container.size_flags_vertical = Control.SIZE_SHRINK_CENTER | Control.SIZE_EXPAND
+					"Bottom":
+						the_container.size_flags_vertical = Control.SIZE_SHRINK_END | Control.SIZE_EXPAND
 			match theNode.hLayoutAlign:
 				"Left":
 					the_container.alignment = BoxContainer.AlignmentMode.ALIGNMENT_BEGIN
