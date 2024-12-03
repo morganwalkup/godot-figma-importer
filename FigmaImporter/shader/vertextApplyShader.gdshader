@@ -6,7 +6,6 @@ uniform bool use_gradient = false;
 uniform bool use_image = false;
 uniform bool use_solid = true;
 uniform bool gradient_behind = false;
-varying vec4 vertex_color;
 uniform vec4 target_color : source_color = vec4(0.6, 0.6, 0.6, 1.0);
 uniform float tolerance : hint_range(0.001, 1.0,0.001) = 0.001;
 uniform vec4 new_bg_color : source_color = vec4(0.6, 0.6, 0.6, 1.0);
@@ -22,9 +21,15 @@ uniform bool keep_aspect = true;
 uniform bool fill_rect = true;
 uniform bool tile_texture = false;
 uniform bool manual_scale = false;
+uniform vec2 vert_offset = vec2(0.0, 0.0);
+
+varying vec4 vertex_color;
+varying vec4 modulated_color;
 
 void vertex() {
     vertex_color = COLOR;
+	VERTEX.xy += vert_offset;
+	modulated_color = vertex_color / target_color;
 }
 
 void fragment() {
@@ -61,9 +66,7 @@ void fragment() {
     }
 	vec4 image = texture(image_texture, uv);
 	vec4 gradient =  texture(gradient_texture,UV);
-	//vertex_color == target_color
-	//distance(vertex_color.rgba, target_color.rgba) < tolerance
-	if (distance(vertex_color.rgba, target_color.rgba) < tolerance) {
+	if (distance(vertex_color.rgb, target_color.rgb) < tolerance) {
 		if (use_solid) { COLOR = new_bg_color; }
 		if (gradient_behind && use_gradient) {
 			if (use_solid) { COLOR.rgb = mix(COLOR.rgb, gradient.rgb, gradient.a); } else { COLOR = gradient; }
@@ -74,5 +77,6 @@ void fragment() {
 		if (!gradient_behind && use_gradient) {
 			if(use_image || use_solid) { COLOR.rgb = mix(COLOR.rgb, gradient.rgb, gradient.a); } else { COLOR = gradient; }
 		}
+		COLOR *= modulated_color.a;
 	}
 }
