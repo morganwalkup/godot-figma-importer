@@ -1,5 +1,5 @@
+class_name DesignerTools
 extends Control
-class_name UIDesignTools
 
 #var script_dir:String = get_script().get_path().get_base_dir()
 #const frameShaderPath:String = "res://shader/vertex_apply_shader.gdshader"

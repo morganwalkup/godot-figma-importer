@@ -158,9 +158,9 @@ func _validate_property(property : Dictionary) -> void:
 		property.usage |= PROPERTY_USAGE_READ_ONLY
 
 func _on_control_resized():
-	UIDesignTools.restrictMaxSize(self,maxSize)
-	UIDesignTools.centerOnResize(self,center_rotation)
-	if UIDesignTools.shaderNameMatches(self,frameShaderPath):
+	DesignerTools.restrictMaxSize(self,maxSize)
+	DesignerTools.centerOnResize(self,center_rotation)
+	if DesignerTools.shaderNameMatches(self,frameShaderPath):
 		self.material.set_shader_parameter("node_size", Vector2(self.size))
 	#if self.heightSizeMode == "HUG":
 		#self.size_flags_vertical = SIZE_SHRINK_CENTER
@@ -171,7 +171,7 @@ func _on_control_resized():
 
 
 func break_the_style_link(theValue):
-	UIDesignTools.break_the_style_link(self,frameShaderPath)
+	DesignerTools.break_the_style_link(self,frameShaderPath)
 	
 func update_props(theNode):
 	inner_container = theNode
@@ -179,7 +179,7 @@ func update_props(theNode):
 
 func center_the_rotation(theVar):
 	center_rotation = theVar
-	UIDesignTools.center_the_rotation_s(self, is_scene_ready, center_rotation)
+	DesignerTools.center_the_rotation_s(self, is_scene_ready, center_rotation)
 
 func update_shadow_color(theVar):
 	shadow_color = theVar
@@ -201,77 +201,77 @@ func update_shadow_offest(theVar):
 	
 func set_tint_color(theVar):
 	tint_color = theVar
-	if fill_texture != null && UIDesignTools.shaderNameMatches(self,frameShaderPath) && is_scene_ready:
+	if fill_texture != null && DesignerTools.shaderNameMatches(self,frameShaderPath) && is_scene_ready:
 		self.material.set_shader_parameter("tint_color", tint_color)
 		
 func update_position_offset(theVar):
 	position_offset = theVar
-	if fill_texture != null && UIDesignTools.shaderNameMatches(self,frameShaderPath) && is_scene_ready:
+	if fill_texture != null && DesignerTools.shaderNameMatches(self,frameShaderPath) && is_scene_ready:
 		self.material.set_shader_parameter("offset", position_offset)
 		
 func update_size_stretch(theVar):
 	size_stretch = theVar
-	if fill_texture != null && UIDesignTools.shaderNameMatches(self,frameShaderPath) && is_scene_ready:
+	if fill_texture != null && DesignerTools.shaderNameMatches(self,frameShaderPath) && is_scene_ready:
 		self.material.set_shader_parameter("stretch", size_stretch)
 		
 func update_text_tile(theVar):
 	tile_texture = theVar
-	if fill_texture != null && UIDesignTools.shaderNameMatches(self,frameShaderPath) && is_scene_ready:
+	if fill_texture != null && DesignerTools.shaderNameMatches(self,frameShaderPath) && is_scene_ready:
 		self.material.set_shader_parameter("tile_texture", tile_texture)
 
 func update_fill_zoom(theVar):
 	zoom = theVar
-	if fill_texture != null && UIDesignTools.shaderNameMatches(self,frameShaderPath) && is_scene_ready:
+	if fill_texture != null && DesignerTools.shaderNameMatches(self,frameShaderPath) && is_scene_ready:
 		self.material.set_shader_parameter("texture_scale", zoom)
 	
 func set_image_flipx(theVar):
 	flip_x = theVar
-	if fill_texture != null && UIDesignTools.shaderNameMatches(self,frameShaderPath) && is_scene_ready:
+	if fill_texture != null && DesignerTools.shaderNameMatches(self,frameShaderPath) && is_scene_ready:
 		self.material.set_shader_parameter("flip_x", flip_x)
 
 func set_image_flipy(theVar):
 	flip_y = theVar
-	if fill_texture != null && UIDesignTools.shaderNameMatches(self,frameShaderPath) && is_scene_ready:
+	if fill_texture != null && DesignerTools.shaderNameMatches(self,frameShaderPath) && is_scene_ready:
 		self.material.set_shader_parameter("flip_y", flip_y)
 
 func update_edge_tolerance(newTol):
 	edge_fill = newTol
-	if fill_texture != null && UIDesignTools.shaderNameMatches(self,frameShaderPath) && is_scene_ready:
+	if fill_texture != null && DesignerTools.shaderNameMatches(self,frameShaderPath) && is_scene_ready:
 		self.material.set_shader_parameter("tolerance", newTol)
 
 func set_image_sizing(theSizing):
 	textureSizeMode = theSizing
-	UIDesignTools.set_image_sizing(self,textureSizeMode,frameShaderPath)
+	DesignerTools.set_image_sizing(self,textureSizeMode,frameShaderPath)
 
 func set_use_solid(theVar):
 	use_solid_fill = theVar
-	if UIDesignTools.shaderNameMatches(self,frameShaderPath):
+	if DesignerTools.shaderNameMatches(self,frameShaderPath):
 		self.material.set_shader_parameter("use_solid", use_solid_fill)
 		
 func set_gradientBehindImage(theVar):
 	gradient_behind_image = theVar
-	if UIDesignTools.shaderNameMatches(self,frameShaderPath):
+	if DesignerTools.shaderNameMatches(self,frameShaderPath):
 		self.material.set_shader_parameter("gradient_behind", gradient_behind_image)
 
 func set_background_gradient(_theGradient):
 	fill_gradient = _theGradient
-	UIDesignTools.set_background_gradient(self,is_scene_ready,fill_gradient,frameShaderPath)
+	DesignerTools.set_background_gradient(self,is_scene_ready,fill_gradient,frameShaderPath)
 	
 func set_background_image(_theTexture):
 	fill_texture = _theTexture
-	UIDesignTools.set_background_image(self,is_scene_ready,fill_texture,frameShaderPath)
+	DesignerTools.set_background_image(self,is_scene_ready,fill_texture,frameShaderPath)
 	
 func set_wSizing(_theSize):
 	widthSizeMode = _theSize
-	UIDesignTools.set_wSizing(self,is_scene_ready,widthSizeMode)
+	DesignerTools.set_wSizing(self,is_scene_ready,widthSizeMode)
 		
 func set_hSizing(_theSize):
 	heightSizeMode = _theSize
-	UIDesignTools.set_hSizing(self,is_scene_ready,heightSizeMode)
+	DesignerTools.set_hSizing(self,is_scene_ready,heightSizeMode)
 
 func set_scrolling(_theScroll):
 	scrollingMode = _theScroll
-	UIDesignTools.set_scrolling(self,is_scene_ready,scrollingMode)
+	DesignerTools.set_scrolling(self,is_scene_ready,scrollingMode)
 
 func set_max_size(_theSize):
 	maxSize = _theSize
@@ -283,11 +283,11 @@ func set_minimum_size(_theSize):
 
 func set_anchor_horizontal(_theAnchorString):
 	horizontalAnchor = _theAnchorString
-	UIDesignTools.set_anchor_horizontal(self,is_scene_ready,horizontalAnchor)
+	DesignerTools.set_anchor_horizontal(self,is_scene_ready,horizontalAnchor)
 
 func set_anchor_vertical(_theAnchorString):
 	verticalAnchor = _theAnchorString
-	UIDesignTools.set_anchor_vertical(self,is_scene_ready,verticalAnchor)
+	DesignerTools.set_anchor_vertical(self,is_scene_ready,verticalAnchor)
 
 func set_clipping(_theVar):
 	clipFrameContents = _theVar
@@ -296,29 +296,29 @@ func set_clipping(_theVar):
 func set_layout_wrap(_theVar):
 	layoutWrap = _theVar
 	if is_scene_ready:
-		UIDesignTools.change_layout(self,inner_container)
+		DesignerTools.change_layout(self,inner_container)
 	
 func set_layout_mode(_theVar):
 	layoutMode = _theVar
 	if layoutMode == "NONE":
 		layoutWrap = "NO_WRAP"
 	if is_scene_ready:
-		UIDesignTools.change_layout(self,inner_container)
+		DesignerTools.change_layout(self,inner_container)
 
 func set_h_alignm(_theVar):
 	hLayoutAlign = _theVar
 	if is_scene_ready:
-		UIDesignTools.container_align_adjust(self,inner_container)
-		UIDesignTools.children_halign_adjust(self,inner_container)
-		UIDesignTools.update_gap_space(self,inner_container)
+		DesignerTools.container_align_adjust(self,inner_container)
+		DesignerTools.children_halign_adjust(self,inner_container)
+		DesignerTools.update_gap_space(self,inner_container)
 	
 	
 func set_v_alignm(_theVar):
 	vLayoutAlign = _theVar
 	if is_scene_ready:
-		UIDesignTools.container_align_adjust(self,inner_container)
-		UIDesignTools.children_valign_adjust(self,inner_container)
-		UIDesignTools.update_gap_space(self,inner_container)
+		DesignerTools.container_align_adjust(self,inner_container)
+		DesignerTools.children_valign_adjust(self,inner_container)
+		DesignerTools.update_gap_space(self,inner_container)
 
 func round_the_corners(_theRound):
 	corner_radius = _theRound
@@ -338,7 +338,7 @@ func change_all_corners(_theRound):
 func set_background_fill(_theFill):
 	fill_color = _theFill
 	if is_scene_ready:
-		if UIDesignTools.shaderNameMatches(self,frameShaderPath):
+		if DesignerTools.shaderNameMatches(self,frameShaderPath):
 			styleBox.set("bg_color", Color(0.6,0.6,0.6,1.0))
 			self.material.set_shader_parameter("new_bg_color", fill_color)
 		else:
@@ -400,14 +400,14 @@ func set_grid_col(_newCol):
 func set_gap_space(_newGapSpace):
 	spacing = _newGapSpace
 	if is_scene_ready:
-		UIDesignTools.update_gap_space(self,inner_container)
+		DesignerTools.update_gap_space(self,inner_container)
 
 func set_vgap_space(_newGapSpace):
 	secondary_spacing = _newGapSpace
 	if is_scene_ready:
-		UIDesignTools.update_gap_space(self,inner_container)
+		DesignerTools.update_gap_space(self,inner_container)
 
 func space_override(_theVar):
 	autoSpace = _theVar
 	if is_scene_ready:
-		UIDesignTools.update_gap_space(self,inner_container)
+		DesignerTools.update_gap_space(self,inner_container)
