@@ -3,7 +3,7 @@ class_name DesignerFrame
 extends ScrollContainer
 
 var script_dir:String = get_script().get_path().get_base_dir()
-var frameShaderPath:String = script_dir + "/shader/vertextApplyShader.gdshader"
+var frameShaderPath:String = script_dir + "/shader/vertex_apply_shader.gdshader"
 var is_scene_ready:bool = false
 var the_name:String
 var the_id:String

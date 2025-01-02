@@ -55,7 +55,7 @@ To automate this, we recommend Git submodules.
 
 ### Importer
 + Create a User Interface Scene, a 2D scene with a Control node, or a scene with a FigmaImporter base node.
-+ If you're not using a FigmaImporter node, attach the FigmaImporter.gd script to the control node in which you want to place the imported content.
++ If you're not using a FigmaImporter node, attach the figma_importer.gd script to the control node in which you want to place the imported content.
 + <ins>**Document Json File:**</ins> Look at the Inspector under "Figma JSON Import." Select the json you exported from Figma.
 + <ins>**Process Json:**</ins> Click the Process Json "On" button to load the list of pages.
 + <ins>**Select Page:**</ins> Select the page from your Figma document you want to load.

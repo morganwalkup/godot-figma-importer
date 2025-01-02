@@ -349,7 +349,7 @@ func process_colors(theColorsArray,theNode):
 							place_error_image(theNode)
 
 func place_error_image(theNode)->void:
-	var errorFile:String = script_dir + "/errorTexture.png"
+	var errorFile:String = script_dir + "/error_texture.png"
 	var image_texture = load(errorFile) as Texture
 	theNode.fill_texture = image_texture
 	theNode.textureSizeMode = "Fill"

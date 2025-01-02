@@ -2,7 +2,7 @@
 class_name FigmaGradientTexture2D
 extends GradientTexture2D
 
-#Gradient solution from CrazyStewie https://github.com/crazyStewie
+# Gradient solution from CrazyStewie https://github.com/crazyStewie
 
 @export var figma_transform_array : Array:
 	set(value):

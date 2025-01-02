@@ -2,7 +2,7 @@ extends Control
 class_name UIDesignTools
 
 #var script_dir:String = get_script().get_path().get_base_dir()
-#const frameShaderPath:String = "res://shader/vertextApplyShader.gdshader"
+#const frameShaderPath:String = "res://shader/vertex_apply_shader.gdshader"
 
 static func center_the_rotation_s(theNode:Control, is_scene_ready:bool, center_rotation:bool)->void:
 	if is_scene_ready:
