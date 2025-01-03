@@ -27,20 +27,14 @@ Forked from https://github.com/mightymochi/figma-to-godot-experiment
 
 # Exporting from Figma
 ### Data Export
-Exporting the necessary data from figma requires this plugin: https://github.com/yagudaev/figma-to-json
+Exporting the necessary data from figma requires the figma plugin defined in `./figma_plugin/manifest.json`.
 This plugin requires the Figma desktop app.
 
-1. Download the latest release https://github.com/yagudaev/figma-to-json/releases
-1. Unzip the file to a folder
 1. In the Figma desktop app, open a Figma document.
 1. Search for and run Import plugin from manifest… via the Quick Actions search bar.
-1. Select the manifest you unzipped in step 2
-
-Follow the plugin instructions to export your Figma file to json, and add the json to your Godot project. 
-
-1. In the Figma desktop app, open a Figma document.
-1. Search for an run Figma To JSON via the Quick Actions search bar.
-1. Click Download JSON and select a folder to download to
+1. Select the manifest file from `./figma_plugin/manifest.json`.
+1. Search for and run `Figma To JSON for Godot` via the Quick Actions search bar.
+1. Click `Export` and select a location for the json file.
 
 ### Image Export
 To export images using the necessary hash names for the importer, use this plugin: https://www.figma.com/community/plugin/1070707193730369068/tojson
