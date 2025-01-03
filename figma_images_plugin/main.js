@@ -1,6 +1,6 @@
 figma.showUI(__html__);
 
-async function exportImages() {
+async function exportImages(type) {
   // Find all nodes that contain image fills
   const nodes = figma.currentPage.findAll(node => {
     if ('fills' in node) {
@@ -43,13 +43,16 @@ async function exportImages() {
 
   // Send to UI for zipping and downloading
   figma.ui.postMessage({ 
-    type: "export-ready", 
+    type: type, 
     files: exportRequests 
   });
 }
 
 figma.ui.onmessage = async (msg) => {
-  if (msg.type === "export-images") {
-    await exportImages();
+  if (msg.type === "export-separate") {
+    await exportImages("export-separate-ready");
+  }
+  if (msg.type === "export-zip") {
+    await exportImages("export-zip-ready");
   }
 };
