@@ -1,0 +1,36 @@
+<script src="https://unpkg.com/fflate"></script>
+<button id="export">Export Images</button>
+
+<script>
+onmessage = async (event) => {
+  const msg = event.data.pluginMessage;
+
+  if (msg.type === "export-ready") {
+    // Create zip object
+    const zipObj = {};
+
+    // Add files to zip object
+    msg.files.forEach(file => {
+      zipObj[`images/${file.filename}`] = new Uint8Array(file.data);
+    });
+
+    // Zip the files
+    const zipped = fflate.zipSync(zipObj);
+    
+    // Download zip file
+    const blob = new Blob([zipped], { type: 'application/zip' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'figma-images.zip';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
+};
+
+document.getElementById("export").onclick = () => {
+  parent.postMessage({ pluginMessage: { type: "export-images" } }, "*");
+};
+</script>
