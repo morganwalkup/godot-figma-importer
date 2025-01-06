@@ -1,0 +1,19 @@
+{
+    "name": "Export Fonts for Godot",
+    "id": "export-fonts-for-godot",
+    "api": "1.0.0",
+    "main": "main.js",
+    "ui": "ui.html",
+    "capabilities": [],
+    "enableProposedApi": false,
+    "documentAccess": "dynamic-page",
+    "editorType": [
+      "figma"
+    ],
+    "networkAccess": {
+      "allowedDomains": [
+        "https://fonts.googleapis.com",
+        "https://fonts.gstatic.com"
+      ]
+    }
+}

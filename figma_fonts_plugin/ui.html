@@ -1,0 +1,24 @@
+<html>
+<body>
+  <button id="scanButton">Scan for Fonts</button>
+  <div id="results"></div>
+
+  <script>
+    document.getElementById('scanButton').onclick = () => {
+      parent.postMessage({ pluginMessage: { type: 'scan-fonts' } }, '*');
+    };
+
+    onmessage = (event) => {
+      const msg = event.data.pluginMessage;
+      if (msg.type === 'font-results') {
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = msg.fonts.map(font => `
+          <div>
+            ${JSON.stringify(font)}
+          </div>
+        `).join('<hr>');
+      }
+    }
+  </script>
+</body>
+</html>
