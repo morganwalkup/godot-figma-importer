@@ -2,10 +2,27 @@
 <body>
   <button id="scanButton">Scan for Fonts</button>
   <div id="results"></div>
+  <div id="script-section" style="display: none;">
+    <h3>Font Installation Script</h3>
+    <p>Download and run this script to collect all required fonts:</p>
+    <button id="downloadScript">Download Script</button>
+    <pre id="scriptContent" style="display: none;"></pre>
+  </div>
 
   <script>
     document.getElementById('scanButton').onclick = () => {
       parent.postMessage({ pluginMessage: { type: 'scan-fonts' } }, '*');
+    };
+
+    document.getElementById('downloadScript').onclick = () => {
+      const script = document.getElementById('scriptContent').textContent;
+      const blob = new Blob([script], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'font_downloader_for_godot.bat';
+      a.click();
+      URL.revokeObjectURL(url);
     };
 
     onmessage = (event) => {
@@ -13,12 +30,13 @@
       if (msg.type === 'font-results') {
         const resultsDiv = document.getElementById('results');
         resultsDiv.innerHTML = msg.fonts.map(font => `
-          <div>
-            ${JSON.stringify(font)}
-          </div>
-        `).join('<hr>');
+          <div>${font.family} ${font.style}</div>
+        `).join('');
+
+        document.getElementById('script-section').style.display = 'block';
+        document.getElementById('scriptContent').textContent = msg.script;
       }
-    }
+    };
   </script>
 </body>
 </html>
