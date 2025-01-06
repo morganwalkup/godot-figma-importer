@@ -56,12 +56,12 @@ onmessage = async (event) => {
     // Download all responses as a single zip after all responses are received
     if (exportingZip && jsonResponse !== undefined && imagesResponse !== undefined && fontsResponse !== undefined) {
         const zipObj = {};
-        zipObj["figma_export.json"] = jsonResponse;
+        zipObj["figma_export.json"] = fflate.strToU8(jsonResponse);
         imagesResponse.forEach(image => {
-            zipObj[`images/${image.filename}`] = image.data;
+            zipObj[`images/${image.filename}`] = new Uint8Array(image.data);
         });
-        zipObj["figma_download_fonts.bat"] = fontsResponse;
-        const zipped = fflate.zipSync(zipObj); // TODO: Max call size exceeded :(
+        zipObj["figma_download_fonts.bat"] = fflate.strToU8(fontsResponse);
+        const zipped = fflate.zipSync(zipObj);
         downloadFile(zipped, "figma_export.godot.zip", "application/zip");
         jsonResponse = undefined;
         imagesResponse = undefined
