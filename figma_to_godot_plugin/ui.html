@@ -1,0 +1,95 @@
+<script src="https://unpkg.com/fflate"></script>
+<h2>Figma to Godot</h2>
+<p>This plugin exports the Figma project and its assets to a Godot-ready format.</p>
+<button type="button" id="export-zip">Export all as ZIP</button>
+<button type="button" id="export-json">Export JSON only</button>
+<button type="button" id="export-images">Export images only</button>
+<button type="button" id="export-fonts">Export fonts only</button>
+<button type="button" id="cancel">Cancel</button>
+
+<script>
+let exportingZip = false;
+let jsonResponse = undefined;
+let imagesResponse = undefined;
+let fontsResponse = undefined;
+
+const downloadFile = (content, filename, type) => {
+    const blob = new Blob([content], { type });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
+onmessage = async (event) => {
+    // Handle response-json message
+    if (event.data.pluginMessage.type === "response-json") {
+        jsonResponse = event.data.pluginMessage.jsonString;
+        if (!exportingZip) {
+            downloadFile(jsonResponse, "figma_export.godot.json", "application/json");
+            jsonResponse = undefined;
+        }
+    }
+
+    // Handle response-images message
+    if (event.data.pluginMessage.type === "response-images") {
+        imagesResponse = event.data.pluginMessage.images;
+        if (!exportingZip) {
+            (imagesResponse || []).forEach(image => {
+                downloadFile(image.data, image.filename, "image/png");
+            });
+            imagesResponse = undefined;
+        }
+    }
+
+    // Handle response-fonts message
+    if (event.data.pluginMessage.type === "response-fonts") {
+        fontsResponse = event.data.pluginMessage.batchScript;
+        if (!exportingZip) {
+            downloadFile(fontsResponse, "figma_download_fonts.bat", "text/plain");
+            fontsResponse = undefined;
+        }
+    }
+
+    // Download all responses as a single zip after all responses are received
+    if (exportingZip && jsonResponse !== undefined && imagesResponse !== undefined && fontsResponse !== undefined) {
+        const zipObj = {};
+        zipObj["figma_export.json"] = jsonResponse;
+        imagesResponse.forEach(image => {
+            zipObj[`images/${image.filename}`] = image.data;
+        });
+        zipObj["figma_download_fonts.bat"] = fontsResponse;
+        const zipped = fflate.zipSync(zipObj); // TODO: Max call size exceeded :(
+        downloadFile(zipped, "figma_export.godot.zip", "application/zip");
+        jsonResponse = undefined;
+        imagesResponse = undefined
+        fontsResponse = undefined;
+    }
+}
+
+document.getElementById("export-zip").onclick = () => {
+    exportingZip = true;
+    parent.postMessage({ pluginMessage: { type: "request-json" } }, "*");
+    parent.postMessage({ pluginMessage: { type: "request-images" } }, "*");
+    parent.postMessage({ pluginMessage: { type: "request-fonts" } }, "*");
+};
+
+document.getElementById("export-json").onclick = () => {
+  parent.postMessage({ pluginMessage: { type: "request-json" } }, "*");
+};
+
+document.getElementById("export-images").onclick = () => {
+  parent.postMessage({ pluginMessage: { type: "request-images" } }, "*");
+};
+
+document.getElementById("export-fonts").onclick = () => {
+  parent.postMessage({ pluginMessage: { type: "request-fonts" } }, "*");
+};
+
+document.getElementById("cancel").onclick = () => {
+  parent.postMessage({ pluginMessage: { type: "request-cancel" } }, "*");
+};
+
+</script>
