@@ -1,6 +1,6 @@
 {
-    "name": "Figma to JSON for Godot",
-    "id": "figma-to-json-for-godot",
+    "name": "Export JSON for Godot",
+    "id": "export-json-for-godot",
     "api": "1.0.0",
     "main": "main.js",
     "ui": "ui.html",
