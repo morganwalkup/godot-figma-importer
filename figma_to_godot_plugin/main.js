@@ -90,6 +90,8 @@ const getObjectFromNode = (node, withoutRelations) => {
  * @returns {Promise<Array<{ data: Blob, filename: string }>>} A promise that resolves to an array of image objects.
  */
 async function getImages() {
+  const imageHashes = new Set();
+
   // Find all nodes that contain image fills
   const startingNode = exportType === "page" ? figma.currentPage : figma.root;
   const nodes = startingNode.findAll(node => {
@@ -117,15 +119,17 @@ async function getImages() {
       );
 
       for (const fill of imageFills) {
+        if (imageHashes.has(fill.imageHash)) {
+          continue;
+        }
+        imageHashes.add(fill.imageHash);
         const imageData = await node.exportAsync({
           format: "PNG",
           constraint: { type: "SCALE", value: 1 }
         });
-
-        const imageHash = fill.imageHash;
         images.push({
           data: imageData,
-          filename: `${imageHash}.png`
+          filename: `${fill.imageHash}.png`
         });
       }
     }
@@ -140,13 +144,15 @@ async function getImages() {
  */
 const getFontList = async () => {
   const fonts = new Set();
+  const fontNames = new Set();
 
   const traverse = (node) => {
     if (node.type === "TEXT") {
         // Get font names from text node
         node.getRangeAllFontNames(0, node.characters.length).forEach(font => {
-        console.log("Font found:", font);
-        fonts.add(font);
+          if (fontNames.has(`${font.family} ${font.style}`)) return;
+          fontNames.add(`${font.family} ${font.style}`);
+          fonts.add(font);
         });
     }
 
