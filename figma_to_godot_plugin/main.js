@@ -1,6 +1,9 @@
 /** Show the `ui.html` page*/
 figma.showUI(__html__);
 
+/** Global variables */
+let exportType = "page"; // "page" or "project"
+
 /**
  * Calls to `parent.postMessage` inside `ui.html` will trigger this callback.
  * The callback will be passed the `pluginMessage` property of the posted message.
@@ -10,9 +13,14 @@ figma.ui.onmessage = async (pluginMessage) => {
     // Load all pages to make them available to the plugin
     await figma.loadAllPagesAsync();
 
+    // Handle the "export-type" message
+    if (pluginMessage.type === "export-type") {
+      exportType = pluginMessage.exportType;
+    }
+
     // Handle the `request-json` message
     if (pluginMessage.type === "request-json") {
-      const json = getObjectFromNode(figma.root);
+      const json = getObjectFromNode(exportType === "page" ? figma.currentPage : figma.root);
       const jsonString = JSON.stringify(json);
       figma.ui.postMessage({ type: "response-json", jsonString: jsonString || null });
     }
@@ -83,7 +91,8 @@ const getObjectFromNode = (node, withoutRelations) => {
  */
 async function getImages() {
   // Find all nodes that contain image fills
-  const nodes = figma.currentPage.findAll(node => {
+  const startingNode = exportType === "page" ? figma.currentPage : figma.root;
+  const nodes = startingNode.findAll(node => {
     if ('fills' in node) {
       return node.fills.some(fill => 
         fill.type === 'IMAGE' && 
@@ -150,7 +159,7 @@ const getFontList = async () => {
   };
 
   await figma.loadAllPagesAsync();
-  traverse(figma.root);
+  traverse(exportType === "page" ? figma.currentPage : figma.root);
   return Array.from(fonts);
 };
 
