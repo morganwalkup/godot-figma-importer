@@ -27,32 +27,15 @@ Forked from https://github.com/mightymochi/figma-to-godot-experiment
 
 # Exporting from Figma
 ### Data Export
-Exporting the necessary data from figma requires the figma plugin defined in `./figma_plugin/manifest.json`.
+Exporting the necessary data from figma requires the [Figma to Godot plugin](https://www.github.com/morganwalkup/figma-godot-exporter).
 This plugin requires the Figma desktop app.
 
+1. Clone the Figma to Godot plugin repository to your local machine.
 1. In the Figma desktop app, open a Figma document.
 1. Search for and run Import plugin from manifest… via the Quick Actions search bar.
-1. Select the manifest file from `./figma_plugin/manifest.json`.
-1. Search for and run `Figma To JSON for Godot` via the Quick Actions search bar.
-1. Click `Export` and select a location for the json file.
-
-### Image Export
-To export images using the necessary hash names for the importer, use this plugin: https://www.figma.com/community/plugin/1070707193730369068/tojson
-
-It will export a zip file of images and json. Discard that json as the data is not sufficient enough for my importer.
-
-Place all of the exported images into single folder in your Godot project. Occasionally the images exported may be seen as corrupt by Godot. Simply open those files in an image editor and resave them with the same file name. Currently the importer is only set up for PNG image files.
-
-### Fonts
-Either copy fonts from your system or download them for a web source. Add them to a single folder within your Godot project. The font files must be named to match the font name in the JSON export file. Font names will have spaces removed and styles will be separated by an underscore(_).
-
-For example, to match the code below the font file name is "Inter_Bold.ttf" :
-```
-"fontName": {
-  "family": "Inter",
-  "style": "Bold"
-}
-```
+1. Select the `manifest.json` file from the Figma to Godot plugin.
+1. Search for and run `Figma to Godot` via the Quick Actions search bar.
+1. Click `Export all as ZIP` and select a location for the zip file.
 
 # Using the Godot Importer
 Clone this repo and copy it to `addons/figma_importer` in your Godot project.
